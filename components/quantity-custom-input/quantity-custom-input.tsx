@@ -18,43 +18,41 @@ import { ChevronDownIcon } from "lucide-react-native";
 
 export const QuantityCustomInput = () => {
   return (
-    <HStack space="xs" reversed={false} className="flex items-end">
-      <VStack className="w-[137px]">
-        <Text className="text-typography-500">Quantidade</Text>
-        <HStack className="border border-[#252529] rounded-md bg-[#17171A]">
-          <Input className="w-[50%] border-0 bg-[#111112] border-r-[#252529]">
-            <InputField
-              type="text"
-              size="lg"
-              className="text-white"
-              keyboardType="numeric"
+    <VStack space="sm" className="w-[137px]">
+      <Text className="text-typography-500">Quantidade</Text>
+      <HStack className="border border-[#252529] rounded-md bg-[#17171A]">
+        <Input className="w-[50%] border-0 bg-[#111112] border-r-[#252529]">
+          <InputField
+            type="text"
+            size="lg"
+            className="text-white"
+            keyboardType="numeric"
+          />
+        </Input>
+        <Select className="w-[50%]">
+          <SelectTrigger
+            variant="outline"
+            size="md"
+            className="w-[90px] border-0"
+          >
+            <SelectInput
+              placeholder="UN."
+              className="text-white w-[42px]"
             />
-          </Input>
-          <Select className="w-[50%]">
-            <SelectTrigger
-              variant="outline"
-              size="md"
-              className="w-[90px] border-0"
-            >
-              <SelectInput
-                placeholder="Select option"
-                className="text-white w-[40px]"
-              />
-              <SelectIcon as={ChevronDownIcon} className="text-[#AFABB6]" />
-            </SelectTrigger>
-            <SelectPortal>
-              <SelectBackdrop />
-              <SelectContent>
-                <SelectDragIndicatorWrapper>
-                  <SelectDragIndicator />
-                </SelectDragIndicatorWrapper>
-                <SelectItem label="Un." value="UN." />
-                <SelectItem label="KG" value="KG." />
-              </SelectContent>
-            </SelectPortal>
-          </Select>
-        </HStack>
-      </VStack>
-    </HStack>
+            <SelectIcon as={ChevronDownIcon} className="text-[#AFABB6]" />
+          </SelectTrigger>
+          <SelectPortal>
+            <SelectBackdrop />
+            <SelectContent>
+              <SelectDragIndicatorWrapper>
+                <SelectDragIndicator />
+              </SelectDragIndicatorWrapper>
+              <SelectItem label="Un." value="UN." />
+              <SelectItem label="KG" value="KG." />
+            </SelectContent>
+          </SelectPortal>
+        </Select>
+      </HStack>
+    </VStack>
   );
 };

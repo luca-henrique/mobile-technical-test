@@ -18,16 +18,16 @@ import { ChevronDownIcon } from "lucide-react-native";
 
 export const CustomSelect = () => {
   return (
-    <VStack>
+    <VStack space="sm">
       <Text className="text-typography-500">Categoria</Text>
-      <Select className="w-[159px]">
+      <Select className="w-[159px] bg-[#17171A]">
         <SelectTrigger
           variant="outline"
           size="md"
           className="w-[159px] border border-[#252529] rounded-md  "
         >
           <SelectInput
-            placeholder="Seleciona uma opção"
+            placeholder="Selecione"
             className="text-white w-[134px]"
           />
           <SelectIcon className="mr-3" as={ChevronDownIcon} />
