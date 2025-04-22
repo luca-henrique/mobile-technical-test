@@ -7,10 +7,21 @@ import {
 } from "@/components/ui/checkbox";
 import { CheckIcon } from "@/components/ui/icon";
 
+import {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetItem,
+  ActionsheetItemText,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+  ActionsheetBackdrop,
+} from "@/components/ui/actionsheet"
+
 import { Text } from "@/components/ui/text";
 import { EllipsisVerticalIcon } from "lucide-react-native";
 import { CategoryTag } from "../category-tag/category-tag";
 import { useShoppingList } from "@/providers/shopping-list-provider";
+import { useState } from "react";
 
 interface ItemProps {
   category: string;
@@ -29,7 +40,15 @@ export const ProductItem = ({
   checked,
   id,
 }: ItemProps) => {
-  const { toggleItemChecked } = useShoppingList();
+  const { toggleItemChecked, deleteItem } = useShoppingList();
+
+  const [showActionsheet, setShowActionsheet] = useState(false)
+  const handleClose = () => setShowActionsheet(false)
+
+  const handleDeleteItem = () => {
+    deleteItem(id)
+    handleClose()
+  }
 
   return (
     <View
@@ -70,9 +89,20 @@ export const ProductItem = ({
       </View>
       <View className="flex flex-row items-center justify-end w-[50%]">
         <CategoryTag category={category} />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setShowActionsheet(true)}>
           <EllipsisVerticalIcon color={"#A881E6"} className="cursor-pointer" />
         </TouchableOpacity>
+        <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
+          <ActionsheetBackdrop />
+          <ActionsheetContent>
+            <ActionsheetDragIndicatorWrapper>
+              <ActionsheetDragIndicator />
+            </ActionsheetDragIndicatorWrapper>
+            <ActionsheetItem onPress={handleDeleteItem}>
+              <ActionsheetItemText>Remover</ActionsheetItemText>
+            </ActionsheetItem>
+          </ActionsheetContent>
+        </Actionsheet>
       </View>
     </View>
   );
