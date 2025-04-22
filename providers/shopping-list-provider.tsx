@@ -34,7 +34,7 @@ export const ShoppingListProvider = ({ children }: { children: ReactNode }) => {
     name: "Carne",
     quantity: 0,
     unit: "unidade",
-    category: "fruta",
+    category: "padaria",
     checked: false,
     position: 0,
   }, {
@@ -42,7 +42,7 @@ export const ShoppingListProvider = ({ children }: { children: ReactNode }) => {
     name: "Arroz",
     quantity: 2,
     unit: "kilograma",
-    category: "padaria",
+    category: "legume",
     checked: false,
     position: 1,
   }, {
@@ -50,7 +50,7 @@ export const ShoppingListProvider = ({ children }: { children: ReactNode }) => {
     name: "Feijão",
     quantity: 1,
     unit: "litro",
-    category: "padaria",
+    category: "fruta",
     checked: false,
     position: 2,
   }, {
@@ -58,7 +58,7 @@ export const ShoppingListProvider = ({ children }: { children: ReactNode }) => {
     name: "Macarrão",
     quantity: 500,
     unit: "kilograma",
-    category: "padaria",
+    category: "carne",
     checked: false,
     position: 3,
   }]);
