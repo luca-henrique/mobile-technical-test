@@ -9,6 +9,7 @@ export const useRegisterProduct = () => {
 
   const methods = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    mode: "onSubmit",
     defaultValues: {
       name: "",
       quantity: { unit: "", quantity: 0 },
@@ -21,11 +22,11 @@ export const useRegisterProduct = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    watch
+    watch,
+    clearErrors
   } = methods;
 
-
-  console.log(watch())
+  console.log("values", watch());
 
   const onSubmit = (data: FormValues) => {
     console.log("Dados do formulário:", data);
@@ -35,11 +36,17 @@ export const useRegisterProduct = () => {
       unit: data.quantity.unit,
       category: data.category,
       checked: false,
-      position: 0
+      position: 0,
     });
-
-    reset();
+    reset(
+      {
+        name: "",
+        quantity: { unit: "", quantity: 0 },
+        category: "",
+      },
+      { keepErrors: false }
+    );
   };
 
-  return { onSubmit, control, handleSubmit, errors };
+  return { onSubmit, control, handleSubmit, errors, clearErrors };
 };

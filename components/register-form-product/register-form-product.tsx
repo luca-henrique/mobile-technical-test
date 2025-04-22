@@ -46,8 +46,10 @@ const optionsCategory = [
 
 
 export const RegisterFormProduct = () => {
-  const { handleSubmit, onSubmit, errors, control } = useRegisterProduct();
+  const { handleSubmit, onSubmit, errors, control, clearErrors } = useRegisterProduct();
   const toast = useToast();
+
+  console.log(errors)
 
   const showNewToast = () => {
     toast.show({
@@ -77,8 +79,8 @@ export const RegisterFormProduct = () => {
     <VStack className="w-full flex flex-col gap-4">
       <CustomInput label="Item" control={control} name="name" />
       <HStack space="lg" className="items-end">
-        <InputWithSelect name={'quantity'} options={optionsQuantity} control={control} label={"Quantidade"} />
-        <CustomSelect name={'category'} options={optionsCategory} control={control} label={"Categoria"} />
+        <InputWithSelect name={'quantity'} options={optionsQuantity} control={control} clearErrors={clearErrors} label={"Quantidade"} />
+        <CustomSelect name='category' options={optionsCategory} control={control} label={"Categoria"} />
         <Button
           size="xl"
           className="rounded-full p-3.5 bg-purple-500"

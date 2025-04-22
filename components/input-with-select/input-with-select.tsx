@@ -26,6 +26,7 @@ interface InputWithSelectProps {
   label: string;
   options: Option[];
   name: string;
+  clearErrors: (value: string) => void;
 }
 
 export const InputWithSelect = ({
@@ -33,12 +34,14 @@ export const InputWithSelect = ({
   options,
   control,
   name,
+  clearErrors,
 }: InputWithSelectProps) => {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field: { onChange, value } }) => {
+        console.log(value.quantity);
         return (
           <VStack space="sm" className="w-[137px]">
             <Text className="text-typography-500">{label}</Text>
@@ -49,16 +52,21 @@ export const InputWithSelect = ({
                   size="lg"
                   className="text-white"
                   keyboardType="numeric"
-                  onChangeText={(text) =>
-                    onChange({ ...value, quantity: text })
-                  }
+                  value={`${value.quantity}`}
+                  onChangeText={(text) => {
+                    const quantity = text === "" ? 0 : parseInt(text, 10);
+                    onChange({ ...value, quantity });
+                    clearErrors("quantity.quantity");
+                  }}
                 />
               </Input>
               <Select
+                selectedValue={value.unit}
                 className="w-[50%]"
-                onValueChange={(selected) =>
-                  onChange({ ...value, unit: selected })
-                }
+                onValueChange={(selected) => {
+                  onChange({ ...value, unit: selected });
+                  clearErrors("quantity.unit");
+                }}
               >
                 <SelectTrigger
                   variant="outline"
@@ -66,7 +74,7 @@ export const InputWithSelect = ({
                   className="w-[90px] border-0"
                 >
                   <SelectInput
-                    placeholder="UN."
+                    placeholder="SEL."
                     className="text-white w-[42px]"
                   />
                   <SelectIcon as={ChevronDownIcon} className="text-[#AFABB6]" />

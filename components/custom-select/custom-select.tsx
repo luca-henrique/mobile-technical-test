@@ -36,11 +36,11 @@ export const CustomSelect = ({ name, control, options, label }: CustomSelectProp
     <Controller
       name={name}
       control={control}
-      render={() => {
+      render={({ field: { onChange } }) => {
         return (
           <VStack space="sm">
             <Text className="text-typography-500">{label}</Text>
-            <Select className="w-[159px] bg-[#17171A]">
+            <Select className="w-[159px] bg-[#17171A]" onValueChange={onChange}>
               <SelectTrigger
                 variant="outline"
                 size="md"
