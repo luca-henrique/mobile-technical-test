@@ -31,12 +31,36 @@ const ShoppingListContext = createContext<ShoppingListContextType | undefined>(
 export const ShoppingListProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<ProductItem[]>([{
     id: 0,
-    name: "",
+    name: "Carne",
     quantity: 0,
-    unit: "",
-    category: "",
+    unit: "unidade",
+    category: "fruta",
     checked: false,
     position: 0,
+  }, {
+    id: 1,
+    name: "Arroz",
+    quantity: 2,
+    unit: "kilograma",
+    category: "padaria",
+    checked: false,
+    position: 1,
+  }, {
+    id: 2,
+    name: "Feijão",
+    quantity: 1,
+    unit: "litro",
+    category: "padaria",
+    checked: false,
+    position: 2,
+  }, {
+    id: 3,
+    name: "Macarrão",
+    quantity: 500,
+    unit: "kilograma",
+    category: "padaria",
+    checked: false,
+    position: 3,
   }]);
 
   // Função para adicionar um item

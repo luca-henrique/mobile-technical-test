@@ -11,9 +11,16 @@ import { Text } from "@/components/ui/text"
 import { EllipsisVerticalIcon } from "lucide-react-native";
 import { CategoryTag } from "../category-tag/category-tag";
 
+interface ItemProps {
+  category: string;
+  name: string;
+  quantity: number;
+  unit: string;
+  id: number;
+  checked: boolean;
+}
 
-
-export const ProductItem = () => {
+export const ProductItem = ({ name, category, quantity, unit, checked, id }: ItemProps) => {
   return (
     <View
       style={{
@@ -33,14 +40,14 @@ export const ProductItem = () => {
           </CheckboxIndicator>
         </Checkbox>
         <View className="flex flex-col ml-4">
-          <Text className="text-white font-bold">Hello World!</Text>
-          <Text className="text-[#AFABB6] ">Hello World!</Text>
+          <Text className="text-white font-bold">{name}</Text>
+          <Text className="text-[#AFABB6] ">{quantity} {unit}</Text>
         </View>
       </View>
       <View className="flex flex-row items-center justify-end w-[50%]">
-        <CategoryTag category="padaria" />
+        <CategoryTag category={category} />
         <TouchableOpacity>
-          <EllipsisVerticalIcon className="text-purple-light cursor-pointer active:scale-95" />
+          <EllipsisVerticalIcon color={'#A881E6'} className="cursor-pointer" />
         </TouchableOpacity>
       </View>
     </View>
