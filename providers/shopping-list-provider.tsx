@@ -15,7 +15,7 @@ type ProductItem = {
 // Define o tipo para o contexto
 type ShoppingListContextType = {
   items: ProductItem[];
-  addItem: (item: ProductItem) => void;
+  addItem: (item: Partial<ProductItem>) => void;
   updateItem: (id: number, updatedItem: Partial<ProductItem>) => void;
   deleteItem: (id: number) => void;
   toggleItemChecked: (id: number) => void;

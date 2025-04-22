@@ -1,14 +1,29 @@
 import { VStack } from "../ui/vstack";
 import { Text } from "../ui/text";
 import { Input, InputField } from "../ui/input";
+import { Controller } from "react-hook-form";
 
-export const CustomInput = () => {
+interface CustomInputProps {
+  control?: any;
+  name: string;
+  label: string;
+}
+
+export const CustomInput = ({ control, name, label }: CustomInputProps) => {
   return (
-    <VStack space="xs">
-      <Text className="text-typography-500">Item</Text>
-      <Input className="w-full border-[#252529] rounded-md">
-        <InputField type="text" size="lg" className="text-white " />
-      </Input>
-    </VStack>
+    <Controller
+      control={control}
+      name={name}
+      render={({ field: { onChange } }) => {
+        return (
+          <VStack space="xs">
+            <Text className="text-typography-500">{label}</Text>
+            <Input className="w-full border-[#252529] rounded-md">
+              <InputField type="text" size="lg" className="text-white" onChangeText={onChange} />
+            </Input>
+          </VStack>
+        );
+      }}
+    />
   );
 };
