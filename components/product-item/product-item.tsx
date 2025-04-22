@@ -15,13 +15,14 @@ import {
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
   ActionsheetBackdrop,
-} from "@/components/ui/actionsheet"
+} from "@/components/ui/actionsheet";
 
 import { Text } from "@/components/ui/text";
 import { EllipsisVerticalIcon } from "lucide-react-native";
 import { CategoryTag } from "../category-tag/category-tag";
 import { useShoppingList } from "@/providers/shopping-list-provider";
 import { useState } from "react";
+import { HStack } from "../ui/hstack";
 
 interface ItemProps {
   category: string;
@@ -42,26 +43,16 @@ export const ProductItem = ({
 }: ItemProps) => {
   const { toggleItemChecked, deleteItem } = useShoppingList();
 
-  const [showActionsheet, setShowActionsheet] = useState(false)
-  const handleClose = () => setShowActionsheet(false)
+  const [showActionsheet, setShowActionsheet] = useState(false);
+  const handleClose = () => setShowActionsheet(false);
 
   const handleDeleteItem = () => {
-    deleteItem(id)
-    handleClose()
-  }
+    deleteItem(id);
+    handleClose();
+  };
 
   return (
-    <View
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        backgroundColor: "#17171A",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-      className="h-[68px] border border-[#252529] rounded-lg p-4"
-    >
+    <HStack className="h-[68px] border border-[#252529] bg-[#17171A] rounded-lg p-4 w-full justify-content-between items-center">
       <View className="flex flex-row items-center w-[50%]">
         <Checkbox
           size="sm"
@@ -104,6 +95,6 @@ export const ProductItem = ({
           </ActionsheetContent>
         </Actionsheet>
       </View>
-    </View>
+    </HStack>
   );
 };

@@ -43,7 +43,7 @@ export const ShoppingListProvider = ({ children }: { children: ReactNode }) => {
     quantity: 2,
     unit: "kilograma",
     category: "legume",
-    checked: false,
+    checked: true,
     position: 1,
   }, {
     id: 2,
