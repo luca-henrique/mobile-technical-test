@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useMemo } from "react";
 
 // Define o tipo para um item de produto
 type ProductItem = {
@@ -108,9 +108,11 @@ export const ShoppingListProvider = ({ children }: { children: ReactNode }) => {
     return items.find((item) => item.id === id);
   };
 
+  const memoItems = useMemo(() => items, [items])
+
   return (
     <ShoppingListContext.Provider
-      value={{ items, addItem, updateItem, deleteItem, toggleItemChecked, getItemById }}
+      value={{ items: memoItems, addItem, updateItem, deleteItem, toggleItemChecked, getItemById }}
     >
       {children}
     </ShoppingListContext.Provider>
