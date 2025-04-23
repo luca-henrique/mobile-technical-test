@@ -11,7 +11,7 @@ export const ProductItemList = () => {
   }
 
   return (
-    <View className="flex flex-col gap-3 mt-[40px] w-full h-[350px] items-center ">
+    <View className="flex flex-col gap-3 mt-[40px] w-full h-[390px] items-center ">
       <FlatList
         contentContainerStyle={{ flexGrow: 1 }}
         scrollEnabled
