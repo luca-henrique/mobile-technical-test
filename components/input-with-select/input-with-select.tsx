@@ -39,7 +39,7 @@ export const InputWithSelect = ({
       name={name}
       control={control}
       render={({ field: { onChange, value } }) => {
-        console.log(value.quantity);
+
         return (
           <VStack space="sm" className="w-[137px]">
             <Text className="text-typography-500">{label}</Text>

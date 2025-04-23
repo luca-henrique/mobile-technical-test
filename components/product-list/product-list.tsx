@@ -11,8 +11,11 @@ export const ProductItemList = () => {
   }
 
   return (
-    <View className="flex flex-col gap-3 mt-[40px] w-full items-center">
+    <View className="flex flex-col gap-3 mt-[40px] w-full h-[350px] items-center ">
       <FlatList
+        contentContainerStyle={{ flexGrow: 1 }}
+        scrollEnabled
+        horizontal={false}
         data={items}
         renderItem={({ item }) => <ProductItem key={item.name} {...item} />}
         keyExtractor={item => `${item.id}-product-item`}

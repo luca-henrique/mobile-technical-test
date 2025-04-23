@@ -26,10 +26,10 @@ export const useRegisterProduct = () => {
     clearErrors
   } = methods;
 
-  console.log("values", watch());
+
 
   const onSubmit = (data: FormValues) => {
-    console.log("Dados do formulário:", data);
+
     addItem({
       name: data.name,
       quantity: data.quantity.quantity,
@@ -48,5 +48,5 @@ export const useRegisterProduct = () => {
     );
   };
 
-  return { onSubmit, control, handleSubmit, errors, clearErrors };
+  return { onSubmit, control, watch, handleSubmit, errors, clearErrors };
 };

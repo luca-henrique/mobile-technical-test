@@ -1,7 +1,14 @@
 import { VStack } from "../ui/vstack";
 import { HStack } from "../ui/hstack";
 import { Button, ButtonIcon } from "../ui/button";
-import { Apple, Beef, Carrot, EditIcon, Milk, Sandwich } from "lucide-react-native";
+import {
+  Apple,
+  Beef,
+  Carrot,
+  EditIcon,
+  Milk,
+  Sandwich,
+} from "lucide-react-native";
 import { CustomInput } from "../custom-input/custom-input";
 import { InputWithSelect } from "../input-with-select/input-with-select";
 import { CustomSelect } from "../custom-select/custom-select";
@@ -9,6 +16,7 @@ import { useRegisterProduct } from "./use-register-product";
 import { useEffect } from "react";
 import { Toast, ToastDescription, ToastTitle, useToast } from "../ui/toast";
 import { optionsQuantity } from "@/constants/option-quantity";
+import { isObjectNotEmpty } from "@/utils/is-object-not-empty";
 
 const optionsCategory = [
   {
@@ -43,13 +51,14 @@ const optionsCategory = [
   },
 ];
 
-
-
 export const RegisterFormProduct = () => {
   const { handleSubmit, onSubmit, errors, control } = useRegisterProduct();
   const toast = useToast();
 
-  const showNewToast = () => {
+  const isExistError = isObjectNotEmpty(errors);
+
+
+  const showErroValidationFields = () => {
     toast.show({
       id: `number-erro-toast`,
       placement: "top",
@@ -66,19 +75,34 @@ export const RegisterFormProduct = () => {
     });
   };
 
+
   useEffect(() => {
-    if (errors.category || errors.quantity || errors.name) {
-      console.log("aqgui");
-      showNewToast();
+    if (isExistError) {
+      showErroValidationFields();
     }
-  }, [errors.category, errors.name, errors.quantity]);
+  }, [
+    errors.category,
+    errors.name,
+    errors.quantity?.unit,
+    errors.quantity?.quantity,
+  ]);
 
   return (
     <VStack className="w-full flex flex-col gap-4">
       <CustomInput label="Item" control={control} name="name" />
       <HStack space="md" className="items-end">
-        <InputWithSelect name={'quantity'} options={optionsQuantity} control={control} label={"Quantidade"} />
-        <CustomSelect name='category' options={optionsCategory} control={control} label={"Categoria"} />
+        <InputWithSelect
+          name={"quantity"}
+          options={optionsQuantity}
+          control={control}
+          label={"Quantidade"}
+        />
+        <CustomSelect
+          name="category"
+          options={optionsCategory}
+          control={control}
+          label={"Categoria"}
+        />
         <Button
           size="xl"
           className="rounded-full p-3.5 bg-purple-500"
