@@ -26,7 +26,6 @@ interface InputWithSelectProps {
   label: string;
   options: Option[];
   name: string;
-  clearErrors: (value: string) => void;
 }
 
 export const InputWithSelect = ({
@@ -34,7 +33,6 @@ export const InputWithSelect = ({
   options,
   control,
   name,
-  clearErrors,
 }: InputWithSelectProps) => {
   return (
     <Controller
@@ -56,7 +54,6 @@ export const InputWithSelect = ({
                   onChangeText={(text) => {
                     const quantity = text === "" ? 0 : parseInt(text, 10);
                     onChange({ ...value, quantity });
-                    clearErrors("quantity.quantity");
                   }}
                 />
               </Input>
@@ -65,7 +62,6 @@ export const InputWithSelect = ({
                 className="w-[50%]"
                 onValueChange={(selected) => {
                   onChange({ ...value, unit: selected });
-                  clearErrors("quantity.unit");
                 }}
               >
                 <SelectTrigger
