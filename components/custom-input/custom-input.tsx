@@ -18,7 +18,7 @@ export const CustomInput = ({ control, name, label }: CustomInputProps) => {
         return (
           <VStack space="xs">
             <Text className="text-typography-500">{label}</Text>
-            <Input className="w-full border-[#252529] rounded-md">
+            <Input className="w-full border-[#252529] rounded-md h-[40px]">
               <InputField type="text" size="lg" className="text-white" onChangeText={onChange} value={value} />
             </Input>
           </VStack>

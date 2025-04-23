@@ -44,11 +44,11 @@ export const CustomSelect = ({ name, control, options, label }: CustomSelectProp
               <SelectTrigger
                 variant="outline"
                 size="md"
-                className="w-[159px] border border-[#252529] rounded-md  "
+                className="w-[159px] border border-[#252529] rounded-md  h-[40px]"
               >
                 <SelectInput
                   placeholder="Selecione"
-                  className="text-white w-[134px]"
+                  className="text-white w-[134px] "
                 />
                 <SelectIcon className="mr-3" as={ChevronDownIcon} />
               </SelectTrigger>

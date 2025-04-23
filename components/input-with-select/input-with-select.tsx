@@ -44,11 +44,11 @@ export const InputWithSelect = ({
           <VStack space="sm" className="w-[137px]">
             <Text className="text-typography-500">{label}</Text>
             <HStack className="border border-[#252529] rounded-md bg-[#17171A]">
-              <Input className="w-[50%] border-0 bg-[#111112] border-r-[#252529]">
+              <Input className="w-[50%] border-0 bg-[#111112] border-r-[#252529] h-[40px]">
                 <InputField
                   type="text"
                   size="lg"
-                  className="text-white"
+                  className="text-white "
                   keyboardType="numeric"
                   value={`${value.quantity}`}
                   onChangeText={(text) => {
@@ -67,7 +67,7 @@ export const InputWithSelect = ({
                 <SelectTrigger
                   variant="outline"
                   size="md"
-                  className="w-[90px] border-0"
+                  className="w-[90px] border-0 h-[40px]"
                 >
                   <SelectInput
                     placeholder="SEL."

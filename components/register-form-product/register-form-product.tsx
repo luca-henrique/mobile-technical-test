@@ -76,7 +76,7 @@ export const RegisterFormProduct = () => {
   return (
     <VStack className="w-full flex flex-col gap-4">
       <CustomInput label="Item" control={control} name="name" />
-      <HStack space="lg" className="items-end">
+      <HStack space="md" className="items-end">
         <InputWithSelect name={'quantity'} options={optionsQuantity} control={control} label={"Quantidade"} />
         <CustomSelect name='category' options={optionsCategory} control={control} label={"Categoria"} />
         <Button
